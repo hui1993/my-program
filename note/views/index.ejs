@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>慢时光</title>
+	<meta charset="utf-8">
+	<meta property="qc:admins" content="4562636714562571563145" />
+	<style type="text/css">
+		 html{
+			background-color: black;
+		} 
+		*{margin:0;padding: 0;box-sizing: border-box;animation: all 1s;}
+		ol,ul{list-style: none;}
+		.clearfix:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		a{decoration: none;}
+
+		.toast {
+		    position: fixed;
+		    left: 50%;
+		    transform: translateX(-50%);
+		    bottom: 60px;
+		    color: #D15A39;
+		    background: #fff;
+		    padding: 5px 10px;
+		    border-radius: 3px;
+		    box-shadow: 0px 0px 3px 1px rgba(255,255,255,0.6);
+		    display: none;
+		}
+
+
+		/*  header  */
+		.header{
+			position: fixed;
+			margin: 0 auto;
+			padding: 10px 20px 10px;
+			font-size: 16px;
+			font-family: Arial, sans-serif;
+			border-bottom: 1px solid #222;
+			background-color: black;
+			opacity: 0.7;
+			z-index: 2;
+		}
+		.header > ul{
+			width: 1300px;
+			margin: 0 auto;
+		}
+		.header li{
+			display: inline-block;
+			margin: 0 10px;
+			padding: 5px 10px;
+			border:1px solid white;
+			border-radius: 4px;
+			background-color: #444;
+			color: white;
+			cursor: pointer;
+		}
+		.header li>a{
+			text-decoration: none;
+			color: white;
+			cursor: pointer;
+		}
+		.header li+#avatar{
+			padding:0;
+			width: 35px;
+			height: 35px;
+			border-radius: 50%;
+			overflow: hidden;
+		}
+		.header li+#avatar>img{
+			height: 35px;
+		}
+
+		.header #login,#logout,#line,#avatar,#name{
+			float: right;
+		}
+		.header #show{
+			margin-left: 50%; 
+			transform: translateX(-60%);
+			color: white;
+			text-align: center;
+			cursor: text;
+			border-radius: 15px;
+		}
+
+		/*  tummy  */
+		.tummy{
+			padding-top: 60px;
+		}
+		.tummy > .container{
+			position: relative;
+			max-width: 1300px;
+			margin: 0 auto;
+		}
+		.tummy > .container >.note{
+			position: absolute;
+			margin: 20px;
+			width: 200px;
+			background-color: yellow;
+			font-size: 14px;
+			color: white;
+			overflow: hidden;
+		}
+		.tummy > .container >.note > .nail{
+			width: 20px;
+			height: 20px;
+			margin: 5px auto;
+			background-color: #000;
+			border-radius: 50%;
+			box-shadow: 4px 4px 8px #333;
+			cursor: move;
+		}
+		.tummy > .container >.note > .context {
+			width: 200px;
+			min-height: 40px;
+			padding: 15px 10px 10px;
+			border-top: 1px solid #444;
+			color: black;
+		}
+		.tummy > .container >.note > span{
+			float: right;
+			right: 20px;
+			padding: 0 10px 15px; 
+			color: #333;
+		}
+		.footer{
+			display: block;
+			width: 100%;
+			position: fixed;
+			bottom: 0;
+			background-color: #222;
+			opacity: 0.7;
+			text-align: center;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="header">
+		<ul class="headbar">
+			<li id="addmore">添加</li>
+			<li id="show">hello ,
+			<% if (isLogin){ %>
+				<%= user.username %>
+				<%} else { %>
+				亲爱的陌生人
+				<% } %>	，双击钉子可以删除哟！！
+				</li>
+			<% if (isLogin){ %>
+	          <li id="logout"><a class="logout" title="注销" href="/auth/logout">注销</a></li>
+	          <li id="name"><%= user.username %></li>
+	          <li id="avatar"><img src="<%= user.avatar %>" alt=""></li>
+	        <%} else { %>
+	          <li id="login"><a class="login" title="GitHub登录" href="/auth/github"> GitHub登录</a></li>
+	        <% } %>
+		</ul>
+	</div>
+	<div class="tummy">
+		<div class="container clearfix">
+			<div class="note clearfix">
+				<div class="nail"></div>
+				<div class="context">&nbsp;&nbsp;hello，hello，my beautiful girl</div>
+				<span>--胖冬冬</span>
+			</div>
+			<div class="note clearfix">
+				<div class="nail"></div>
+				<div class="context">&nbsp;&nbsp;突然好想你，突然涌上胸口的悸动,脑海中浮现你嘴角的小酒窝里满溢幸福.咬着冰激凌孩子般蹦跳于校园的你可知道，默默地看着你曾是我最幸福的秘密......</div>
+				<span>--冬胖冬</span>
+			</div>
+			<div class="note clearfix">
+				<div class="nail"></div>
+				<div class="context">&nbsp;&nbsp;世界上最远的距离不是 我不能说我爱你而是想你痛彻心脾却只能深埋心底世界上最远的距离不是我不能说我想你而是 彼此相爱 却不能够在一起。。</div>
+				<span>--冬冬胖</span>
+			</div>
+		</div>
+	</div>
+	<div class="footer"></div>
+	<script src="/js/app/index.js"></script>
+</body>
+</html>
